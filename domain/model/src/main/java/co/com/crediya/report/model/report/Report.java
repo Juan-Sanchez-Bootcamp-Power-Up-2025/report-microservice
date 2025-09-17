@@ -15,6 +15,6 @@ public class Report {
 
     String metricKey;
 
-    long approvedLoansCount;
+    Long approvedLoansCount;
 
 }
