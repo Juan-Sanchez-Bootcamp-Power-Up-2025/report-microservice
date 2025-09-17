@@ -8,14 +8,16 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class ReportUseCase {
 
-    public final ReportRepository reportRepository;
+    //public final ReportRepository reportRepository;
 
     public Mono<Report> getReport() {
-        return reportRepository.getReport();
+        //return reportRepository.getReport();
+        return Mono.just(Report.builder().build());
     }
 
-    public Mono<Void> incrementApprovedLoansCount() {
-        return reportRepository.incrementApprovedLoansCount();
+    public Mono<Report> incrementApprovedLoansCount() {
+        return Mono.just(Report.builder().build());
+        //return reportRepository.incrementApprovedLoansCount();
     }
 
 }
