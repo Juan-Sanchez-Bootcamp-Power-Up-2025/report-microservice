@@ -6,7 +6,6 @@ import io.awspring.cloud.sqs.annotation.SqsListener;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 import software.amazon.awssdk.services.sqs.model.*;
 
 @Slf4j
@@ -17,9 +16,11 @@ public class SQSProcessor {
     private final ReportUseCase reportUseCase;
 
     @SqsListener("${entrypoint.sqs.queueName}")
-    public Mono<Void> onMessage(LoanMessage event) {
+    public void onMessage(LoanMessage event) {
         log.debug("SQS ApprovedLoanEvent received: {}", event);
-        return reportUseCase.incrementApprovedLoansCount();
+        reportUseCase.incrementApprovedLoansCount()
+                .doOnError(ex -> log.error("Error processing event {}, message will be retried", event, ex))
+                .subscribe(); // starts the flow in the usecase
     }
 
 }

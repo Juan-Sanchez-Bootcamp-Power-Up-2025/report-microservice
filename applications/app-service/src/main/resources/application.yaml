@@ -18,3 +18,28 @@ entrypoint:
     maxNumberOfMessages: 10
     visibilityTimeoutSeconds: 10
     numberOfThreads: 1
+adapters:
+  aws:
+    dynamodb:
+      tableName: "${AWS_DYNAMODB_TABLE_NAME}"
+      pkAttrName: "${AWS_DYNAMODB_PK_ATTR_NAME}"
+      metricKey: "${AWS_DYNAMODB_METRIC_KEY}"
+      endpoint: "${AWS_DYNAMODB_URL}"
+      region: "${AWS_REGION}"
+      accessKeyId: "${AWS_ACCESS_KEY_ID}"
+      secretAccessKey: "${AWS_SECRET_ACCESS_KEY}"
+logging:
+  level:
+    root: "INFO"
+    co.com.crediya.report: "DEBUG"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+cors:
+  allowed-origins: "http://localhost:4200,http://localhost:8080"

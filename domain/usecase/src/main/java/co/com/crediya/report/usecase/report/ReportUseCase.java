@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class ReportUseCase {
 
-    public final ReportRepository reportRepository;
+    private final ReportRepository reportRepository;
 
     public Mono<Report> getReport() {
         return reportRepository.getReport();

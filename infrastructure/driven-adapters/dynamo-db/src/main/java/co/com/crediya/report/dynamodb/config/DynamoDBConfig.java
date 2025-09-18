@@ -9,8 +9,6 @@ import software.amazon.awssdk.metrics.MetricPublisher;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient;
 
-import java.net.URI;
-
 @Configuration
 public class DynamoDBConfig {
 
@@ -21,7 +19,6 @@ public class DynamoDBConfig {
                 .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials
                         .create(properties.accessKeyId(), properties.secretAccessKey())))
                 .region(Region.of(properties.region()))
-                //.endpointOverride(URI.create(properties.endpoint()))
                 .overrideConfiguration(o -> o.addMetricPublisher(publisher))
                 .build();
     }
