@@ -15,8 +15,8 @@ public class ReportUseCase {
         return reportRepository.getReport();
     }
 
-    public Mono<Void> incrementApprovedLoansCount(LoanMessage loanMessage) {
-        return reportRepository.incrementApprovedLoansCount(loanMessage);
+    public Mono<Void> incrementApprovedLoansCountAndAmount(LoanMessage loanMessage) {
+        return reportRepository.incrementApprovedLoansCountAndAmount(loanMessage);
     }
 
 }

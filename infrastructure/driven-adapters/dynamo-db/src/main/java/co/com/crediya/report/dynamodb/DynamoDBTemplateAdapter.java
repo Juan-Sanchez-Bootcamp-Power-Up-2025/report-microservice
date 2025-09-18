@@ -12,8 +12,6 @@ import reactor.core.publisher.Mono;
 import software.amazon.awssdk.enhanced.dynamodb.*;
 import software.amazon.awssdk.services.dynamodb.model.*;
 
-import java.math.BigDecimal;
-
 @Slf4j
 @Repository
 public class DynamoDBTemplateAdapter extends TemplateAdapterOperations<
@@ -41,7 +39,7 @@ public class DynamoDBTemplateAdapter extends TemplateAdapterOperations<
     }
 
     @Override
-    public Mono<Void> incrementApprovedLoansCount(LoanMessage loanMessage) {
+    public Mono<Void> incrementApprovedLoansCountAndAmount(LoanMessage loanMessage) {
         log.debug("Updating count of approved loans");
         return getReport()
                 .flatMap(report -> {

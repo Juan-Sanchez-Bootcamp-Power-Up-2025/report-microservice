@@ -17,7 +17,7 @@ public class SQSProcessor {
     @SqsListener("${entrypoint.sqs.queueName}")
     public void onMessage(LoanMessage event) {
         log.debug("SQS ApprovedLoanEvent received: {}", event);
-        reportUseCase.incrementApprovedLoansCount(event)
+        reportUseCase.incrementApprovedLoansCountAndAmount(event)
                 .doOnError(ex -> log.error("Error processing event {}, message will be retried", event, ex))
                 .subscribe(); // starts the flow in the usecase
     }

@@ -8,6 +8,6 @@ public interface ReportRepository {
 
     Mono<Report> getReport();
 
-    Mono<Void> incrementApprovedLoansCount(LoanMessage loanMessage);
+    Mono<Void> incrementApprovedLoansCountAndAmount(LoanMessage loanMessage);
 
 }
