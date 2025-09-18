@@ -2,6 +2,7 @@ package co.com.crediya.report.usecase.report;
 
 import co.com.crediya.report.model.report.Report;
 import co.com.crediya.report.model.report.gateways.ReportRepository;
+import co.com.crediya.report.model.report.message.LoanMessage;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -14,8 +15,8 @@ public class ReportUseCase {
         return reportRepository.getReport();
     }
 
-    public Mono<Void> incrementApprovedLoansCount() {
-        return reportRepository.incrementApprovedLoansCount();
+    public Mono<Void> incrementApprovedLoansCount(LoanMessage loanMessage) {
+        return reportRepository.incrementApprovedLoansCount(loanMessage);
     }
 
 }

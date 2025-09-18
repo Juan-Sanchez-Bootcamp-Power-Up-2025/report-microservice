@@ -1,12 +1,11 @@
 package co.com.crediya.report.sqs.listener;
 
-import co.com.crediya.report.sqs.listener.message.LoanMessage;
+import co.com.crediya.report.model.report.message.LoanMessage;
 import co.com.crediya.report.usecase.report.ReportUseCase;
 import io.awspring.cloud.sqs.annotation.SqsListener;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import software.amazon.awssdk.services.sqs.model.*;
 
 @Slf4j
 @Component
@@ -18,7 +17,7 @@ public class SQSProcessor {
     @SqsListener("${entrypoint.sqs.queueName}")
     public void onMessage(LoanMessage event) {
         log.debug("SQS ApprovedLoanEvent received: {}", event);
-        reportUseCase.incrementApprovedLoansCount()
+        reportUseCase.incrementApprovedLoansCount(event)
                 .doOnError(ex -> log.error("Error processing event {}, message will be retried", event, ex))
                 .subscribe(); // starts the flow in the usecase
     }

@@ -1,4 +1,4 @@
-package co.com.crediya.report.sqs.listener.message;
+package co.com.crediya.report.model.report.message;
 
 import java.math.BigDecimal;
 
