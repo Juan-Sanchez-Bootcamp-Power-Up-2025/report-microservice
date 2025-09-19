@@ -8,6 +8,8 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttri
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
+import java.math.BigDecimal;
+
 @DynamoDbBean
 @Data
 @NoArgsConstructor
@@ -19,6 +21,8 @@ public class ReportEntity {
 
     private Long approvedLoansCount;
 
+    private BigDecimal approvedLoansAmount;
+
     @DynamoDbPartitionKey
     @DynamoDbAttribute("metricKey")
     public String getMetricKey() { return metricKey; }
@@ -26,4 +30,7 @@ public class ReportEntity {
     @DynamoDbAttribute("approvedLoansCount")
     public Long getApprovedLoansCount() { return approvedLoansCount;}
 
-    }
+    @DynamoDbAttribute("approvedLoansAmount")
+    public BigDecimal getApprovedLoansAmount() { return approvedLoansAmount;}
+
+}
