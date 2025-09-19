@@ -4,6 +4,7 @@ import co.com.crediya.report.usecase.report.ReportUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -16,6 +17,7 @@ public class Handler {
 
     private final ReportUseCase reportUseCase;
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Mono<ServerResponse> listenGETReport(ServerRequest serverRequest) {
         return reportUseCase.getReport()
                 .doOnSubscribe(subscription -> log.debug(">> GET /api/v1/reports - start"))
