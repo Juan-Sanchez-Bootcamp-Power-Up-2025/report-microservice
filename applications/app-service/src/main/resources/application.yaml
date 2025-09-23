@@ -28,6 +28,12 @@ adapters:
       region: "${AWS_REGION}"
       accessKeyId: "${AWS_ACCESS_KEY_ID}"
       secretAccessKey: "${AWS_SECRET_ACCESS_KEY}"
+  restconsumer:
+    url: "${AUTH_BASE_URL}"
+  ses:
+    region: "${AWS_REGION}"
+    accessKeyId: "${AWS_ACCESS_KEY_ID}"
+    secretAccessKey: "${AWS_SECRET_ACCESS_KEY}"
 logging:
   level:
     root: "INFO"
@@ -41,6 +47,9 @@ management:
     health:
       probes:
         enabled: true
+  health:
+    circuitbreakers:
+      enabled: true
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"
 jwt:
