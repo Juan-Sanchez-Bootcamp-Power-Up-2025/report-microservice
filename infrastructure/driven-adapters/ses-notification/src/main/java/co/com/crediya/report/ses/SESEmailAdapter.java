@@ -18,7 +18,7 @@ public class SESEmailAdapter implements SESGateway {
 
     private final SesAsyncClient sesAsyncClient;
 
-    @Value("")
+    @Value("${adapters.ses.email}")
     private String from;
 
     @Override

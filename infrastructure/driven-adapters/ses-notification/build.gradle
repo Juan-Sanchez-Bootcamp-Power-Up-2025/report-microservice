@@ -4,8 +4,5 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'software.amazon.awssdk:ses'
-    implementation 'com.amazonaws:aws-java-sdk-ses:1.12.791'
     implementation 'org.apache.logging.log4j:log4j-api'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'io.micrometer:micrometer-registry-prometheus'
 }
