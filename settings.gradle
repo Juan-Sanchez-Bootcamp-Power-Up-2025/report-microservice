@@ -32,3 +32,5 @@ include ':rest-consumer'
 project(':rest-consumer').projectDir = file('./infrastructure/driven-adapters/rest-consumer')
 include ':ses-notification'
 project(':ses-notification').projectDir = file('./infrastructure/driven-adapters/ses-notification')
+include ':scheduling'
+project(':scheduling').projectDir = file('./infrastructure/entry-points/scheduling')

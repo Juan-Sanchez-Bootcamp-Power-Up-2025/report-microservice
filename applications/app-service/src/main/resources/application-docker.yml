@@ -9,6 +9,10 @@ entrypoint:
     maxNumberOfMessages: 10
     visibilityTimeoutSeconds: 10
     numberOfThreads: 1
+  ses:
+    daily:
+      cron: ${CRON_EXPRESSION}
+      timezone: ${TIMEZONE}
 adapters:
   aws:
     dynamodb:

@@ -1,6 +1,5 @@
 package co.com.crediya.report.api;
 
-import co.com.crediya.report.usecase.dailyreport.DailyReportUseCase;
 import co.com.crediya.report.usecase.report.ReportUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,8 +17,6 @@ public class Handler {
 
     private final ReportUseCase reportUseCase;
 
-//    private final DailyReportUseCase dailyReportUseCase;
-
     @PreAuthorize("hasAuthority('ADMIN')")
     public Mono<ServerResponse> listenFindReport(ServerRequest serverRequest) {
         return reportUseCase.getReport()
@@ -32,16 +29,5 @@ public class Handler {
                 .doOnError(error -> log.error("Error retrieving report: {}", error.getMessage()))
                 .doFinally(signalType -> log.debug("<< GET /api/v1/reports - end"));
     }
-
-//    Endpoint to test the SES service
-//    @PreAuthorize("hasAuthority('ADMIN')")
-//    public Mono<ServerResponse> listenSendDailyReport(ServerRequest serverRequest) {
-//        String message = "Email sent";
-//        return dailyReportUseCase.sendDailyReport()
-//                .flatMap(v ->
-//                        ServerResponse.ok()
-//                                .contentType(MediaType.APPLICATION_JSON)
-//                                .bodyValue(message));
-//    }
 
 }
