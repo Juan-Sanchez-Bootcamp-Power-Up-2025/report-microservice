@@ -28,3 +28,9 @@ include ':dynamo-db'
 project(':dynamo-db').projectDir = file('./infrastructure/driven-adapters/dynamo-db')
 include ':reactive-web'
 project(':reactive-web').projectDir = file('./infrastructure/entry-points/reactive-web')
+include ':rest-consumer'
+project(':rest-consumer').projectDir = file('./infrastructure/driven-adapters/rest-consumer')
+include ':ses-notification'
+project(':ses-notification').projectDir = file('./infrastructure/driven-adapters/ses-notification')
+include ':scheduling'
+project(':scheduling').projectDir = file('./infrastructure/entry-points/scheduling')

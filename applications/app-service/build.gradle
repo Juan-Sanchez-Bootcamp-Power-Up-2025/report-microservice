@@ -1,7 +1,11 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
+	implementation project(':rest-consumer')
+    implementation project(':ses-notification')
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation project(':reactive-web')
+    implementation project(':scheduling')
 	implementation 'org.reactivecommons.utils:object-mapper:0.1.0'
 	implementation project(':dynamo-db')
 	implementation project(':metrics')

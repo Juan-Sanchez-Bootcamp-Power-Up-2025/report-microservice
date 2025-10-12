@@ -1,4 +1,4 @@
-package co.com.crediya.report.sqs.listener;
+package co.com.crediya.report.scheduling;
 
 import co.com.crediya.report.model.report.message.LoanMessage;
 import co.com.crediya.report.usecase.report.ReportUseCase;

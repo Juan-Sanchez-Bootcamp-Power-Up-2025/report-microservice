@@ -18,7 +18,7 @@ public class Handler {
     private final ReportUseCase reportUseCase;
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    public Mono<ServerResponse> listenGETReport(ServerRequest serverRequest) {
+    public Mono<ServerResponse> listenFindReport(ServerRequest serverRequest) {
         return reportUseCase.getReport()
                 .doOnSubscribe(subscription -> log.debug(">> GET /api/v1/reports - start"))
                 .flatMap(report ->
