@@ -18,6 +18,10 @@ entrypoint:
     maxNumberOfMessages: 10
     visibilityTimeoutSeconds: 10
     numberOfThreads: 1
+  ses:
+    daily:
+      cron: "${CRON_EXPRESSION}"
+      timezone: "${TIMEZONE}"
 adapters:
   aws:
     dynamodb:
@@ -28,6 +32,13 @@ adapters:
       region: "${AWS_REGION}"
       accessKeyId: "${AWS_ACCESS_KEY_ID}"
       secretAccessKey: "${AWS_SECRET_ACCESS_KEY}"
+  restconsumer:
+    url: "${AUTH_BASE_URL}"
+  ses:
+    region: "${AWS_REGION}"
+    accessKeyId: "${AWS_ACCESS_KEY_ID}"
+    secretAccessKey: "${AWS_SECRET_ACCESS_KEY}"
+    email: "${FROM_EMAIL}"
 logging:
   level:
     root: "INFO"
@@ -41,6 +52,9 @@ management:
     health:
       probes:
         enabled: true
+  health:
+    circuitbreakers:
+      enabled: true
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"
 jwt:

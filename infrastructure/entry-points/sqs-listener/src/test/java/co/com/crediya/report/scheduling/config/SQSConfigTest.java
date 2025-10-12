@@ -1,4 +1,4 @@
-package co.com.crediya.report.sqs.listener.config;
+package co.com.crediya.report.scheduling.config;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

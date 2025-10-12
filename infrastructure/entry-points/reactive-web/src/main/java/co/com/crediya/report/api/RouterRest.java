@@ -52,7 +52,8 @@ public class RouterRest {
             )
     )
     public RouterFunction<ServerResponse> routerFunction(Handler handler) {
-        return route(GET("/api/v1/reports"), handler::listenGETReport);
+        return route(GET("/api/v1/reports"), handler::listenFindReport);
+//                .andRoute(GET("/api/v1/send"), handler::listenSendDailyReport); //Endpoint to test the SES service
     }
 
 }
